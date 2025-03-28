@@ -145,16 +145,18 @@ def main():
     if not symptoms_exp:
         print("No symptoms entered. Exiting.")
         return
+    
     disease = disease_prediction(symptoms_exp)
-    print(f"You may have {disease}")
+    print(f"\033[1mYou may have {disease}\033[0m")  # Disease in bold
     print(f"{description_list.get(disease, 'No description available.')}")
     print(f"Severity: {severityDictionary.get(disease, 'Unknown')}")
     print("Take the following precautions:")
     for idx, precaution in enumerate(precautionDictionary.get(disease, []), 1):
         print(f"{idx}) {precaution}")
+
     second_prediction = sec_predict(symptoms_exp)
     if disease != second_prediction[0]:
-        print(f"Alternatively, you may have {second_prediction[0]}")
+        print(f"\033[1mAlternatively, you may have {second_prediction[0]}\033[0m")  # Alternative disease in bold
 if __name__ == "__main__":
     getDescription()
     getSeverityDict()
